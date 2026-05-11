@@ -151,17 +151,6 @@ async def mcp_handler(request: Request):
                                 },
                                 "required": ["case_id", "status"]
                             }
-                        },
-                        {
-                            "name": "getMessages",
-                            "description": "Send a query and get a bot response from N7 messaging service",
-                            "inputSchema": {
-                                "type": "object",
-                                "properties": {
-                                    "query": {"type": "string", "description": "The message or question to send to the bot"}
-                                },
-                                "required": ["query"]
-                            }
                         }
                     ]  # ← tools list closes here
                 }
@@ -181,8 +170,6 @@ async def mcp_handler(request: Request):
                 result = create_case(**args)
             elif tool_name == "updateCaseStatus":
                 result = update_case_status(**args)
-        #elif tool_name == "getMessages":
-           # result = get_messages(**args)
             else:
                 result = f"Unknown tool: {tool_name}"
 
